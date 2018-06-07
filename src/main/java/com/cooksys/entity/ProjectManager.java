@@ -7,6 +7,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import org.hibernate.annotations.CascadeType;
+
 import com.cooksys.dto.datatype.BaseEntity;
 
 @Entity
@@ -15,12 +17,10 @@ public class ProjectManager implements BaseEntity<Long>{
 	@Id
 	@GeneratedValue
 	private Long id;
-	
 	private String firstName;
-	
 	private String lastName;
 	
-	@OneToMany(mappedBy = "manager")
+	@OneToMany//(mappedBy = "manager")
 	private Set<Project> projects;
 
 	public Long getId() {

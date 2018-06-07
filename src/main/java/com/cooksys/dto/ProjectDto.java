@@ -1,40 +1,23 @@
-package com.cooksys.entity;
+package com.cooksys.dto;
 
 import java.util.Date;
 
-import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import org.hibernate.annotations.CascadeType;
+import com.cooksys.entity.Project;
+import com.cooksys.entity.ProjectManager;
 
-import com.cooksys.dto.datatype.BaseEntity;
+public class ProjectDto {
 
-@Entity
-public class Project implements BaseEntity<Long> {
-
-	//=====
-	
-	@Id
-	@GeneratedValue
 	private Long id;
-	
-	@ManyToOne
-	private ProjectManager manager;
-	
-	//---
-	
-	@Temporal(TemporalType.DATE)
+	//private ProjectManager manager;
 	private Date startDate;
-	
-	@Temporal(TemporalType.DATE)
 	private Date dueDate;
-	
-	//=====
-	
+
 	public Date getStartDate() {
 		return startDate;
 	}
@@ -59,14 +42,6 @@ public class Project implements BaseEntity<Long> {
 		this.id = id;
 	}
 
-	public ProjectManager getManager() {
-		return manager;
-	}
-
-	public void setManager(ProjectManager manager) {
-		this.manager = manager;
-	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -83,7 +58,7 @@ public class Project implements BaseEntity<Long> {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Project other = (Project) obj;
+		ProjectDto other = (ProjectDto) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
@@ -91,5 +66,4 @@ public class Project implements BaseEntity<Long> {
 			return false;
 		return true;
 	}
-	
 }
